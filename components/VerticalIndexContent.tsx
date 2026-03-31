@@ -9,7 +9,7 @@ import { Vertical } from "@/lib/verticals";
 interface Post {
   _id: string;
   title: string;
-  slug: { current: string };
+  slug: { current: string } | null;
   publishedAt?: string;
   excerpt?: string;
   mainImageUrl?: string;
@@ -23,7 +23,9 @@ interface Props {
   posts: Post[];
 }
 
-export default function VerticalIndexContent({ vertical, posts }: Props) {
+export default function VerticalIndexContent({ vertical, posts: rawPosts }: Props) {
+  // Drop any posts missing a slug — they can't be linked to
+  const posts = rawPosts.filter((p) => p.slug?.current);
   return (
     <>
       {/* Vertical Hero Header */}
@@ -86,7 +88,7 @@ export default function VerticalIndexContent({ vertical, posts }: Props) {
                     transition={{ duration: 0.5 }}
                   >
                     <Link
-                      href={`/${vertical.slug}/${posts[0].slug.current}`}
+                      href={`/${vertical.slug}/${posts[0].slug!.current}`}
                     >
                       {posts[0].mainImageUrl ? (
                         <img
@@ -125,7 +127,7 @@ export default function VerticalIndexContent({ vertical, posts }: Props) {
                         style={{ fontSize: "22px", lineHeight: "1.25" }}
                       >
                         <Link
-                          href={`/${vertical.slug}/${posts[0].slug.current}`}
+                          href={`/${vertical.slug}/${posts[0].slug!.current}`}
                         >
                           {posts[0].title}
                         </Link>
@@ -212,7 +214,7 @@ export default function VerticalIndexContent({ vertical, posts }: Props) {
                               style={{ fontSize: "14px" }}
                             >
                               <Link
-                                href={`/${vertical.slug}/${post.slug.current}`}
+                                href={`/${vertical.slug}/${post.slug!.current}`}
                               >
                                 {post.title}
                               </Link>
