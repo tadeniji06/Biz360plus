@@ -319,7 +319,7 @@ export default function ArticlePageContent({ post, vertical }: Props) {
                 )}
                 <div className="article-author-info">
                   <div className="article-author-name">
-                    {post.authorName || "Biz360+ Editorial Team"}
+                    {post.authorName || "Business360 Editorial Team"}
                   </div>
                   <div className="article-date">
                     {formatDate(post.publishedAt)}

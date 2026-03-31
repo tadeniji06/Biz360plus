@@ -16,7 +16,7 @@ export default function Navbar() {
           <Link href="/" className="navbar-logo">
             <div>
               <div className="navbar-logo-text">
-                Biz<span>360</span>+
+                Business<span>360</span>
               </div>
               <div className="navbar-logo-sub">
                 Business Intelligence &amp; Insight

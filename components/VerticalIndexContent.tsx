@@ -142,7 +142,7 @@ export default function VerticalIndexContent({ vertical, posts: rawPosts }: Prop
                       )}
                       <div className="card-meta">
                         <span className="card-author">
-                          {posts[0].authorName || "Biz360+ Editor"}
+                          {posts[0].authorName || "Business360 Editor"}
                         </span>
                         <span>·</span>
                         <span className="card-date">

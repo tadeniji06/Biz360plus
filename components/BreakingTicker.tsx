@@ -8,7 +8,7 @@ const TICKER_ITEMS = [
   "Tech startups raise record funding in hospitality AI sector this quarter",
   "Global retail giants eye Africa expansion amid rising middle class",
   "Central banks signal cautious pivot as growth concerns mount worldwide",
-  "Biz360+ launches comprehensive coverage of Africa's fastest-growing verticals",
+  "Business360 launches comprehensive coverage of Africa's fastest-growing verticals",
   "Real estate investment surges in secondary cities across West Africa",
   "Marketing spend shifts to digital-first strategies as ROI pressures intensify",
   "Companies report strong Q1 earnings despite macroeconomic headwinds",

@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const vertical = getVertical(slug);
   if (!vertical) return {};
   return {
-    title: `${vertical.name} | Biz360+`,
+    title: `${vertical.name} | Business360`,
     description: vertical.description,
   };
 }

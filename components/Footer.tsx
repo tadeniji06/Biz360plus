@@ -18,7 +18,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="footer-logo-text">
-              Biz<span>360</span>+
+              Business<span>360</span>
             </div>
             <p className="footer-tagline">
               Your all-in-one business intelligence platform covering
@@ -27,7 +27,7 @@ export default function Footer() {
             </p>
             <div className="footer-socials">
               <a
-                href="https://twitter.com/biz360plus"
+                href="https://twitter.com/business360ng"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="footer-social-link"
@@ -36,7 +36,7 @@ export default function Footer() {
                 <Icon icon="mdi:twitter" />
               </a>
               <a
-                href="https://linkedin.com/company/biz360plus"
+                href="https://linkedin.com/company/business360ng"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="footer-social-link"
@@ -45,7 +45,7 @@ export default function Footer() {
                 <Icon icon="mdi:linkedin" />
               </a>
               <a
-                href="https://facebook.com/biz360plus"
+                href="https://facebook.com/business360ng"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="footer-social-link"
@@ -54,7 +54,7 @@ export default function Footer() {
                 <Icon icon="mdi:facebook" />
               </a>
               <a
-                href="https://instagram.com/biz360plus"
+                href="https://instagram.com/business360ng"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="footer-social-link"
@@ -162,7 +162,7 @@ export default function Footer() {
         {/* Footer Bottom */}
         <div className="footer-bottom">
           <p className="footer-copyright">
-            © {year} Biz360+. All rights reserved.
+            © {year} Business360. All rights reserved.
           </p>
           <div className="footer-bottom-links">
             <Link href="/privacy-policy">Privacy Policy</Link>

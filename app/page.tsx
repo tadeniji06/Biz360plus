@@ -6,7 +6,7 @@ import VerticalsHub from "@/components/VerticalsHub";
 import { fetchPosts } from "@/lib/sanity";
 
 export const metadata: Metadata = {
-  title: "Biz360+ | Business Intelligence & Insight",
+  title: "Business360 | Business Intelligence & Insight",
   description:
     "Africa's premier all-in-one business publication covering Hospitality, Tech, Retail, Finance, Marketing, Companies, News, Economy, Real Estate, and FemmeBiz.",
 };
@@ -15,9 +15,9 @@ export const revalidate = 300;
 
 /** Tag posts with their vertical slug and filter out any with null slugs */
 function tagPosts(posts: Awaited<ReturnType<typeof fetchPosts>>, verticalSlug: string): HeroPost[] {
-  return posts
-    .filter((p) => p.slug?.current)
-    .map((p) => ({ ...p, verticalSlug }));
+  return (posts as HeroPost[])
+    .filter((p: HeroPost) => p.slug?.current)
+    .map((p: HeroPost) => ({ ...p, verticalSlug }));
 }
 
 export default async function HomePage() {

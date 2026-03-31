@@ -106,7 +106,7 @@ export default function HomeHero({ allPosts }: HomeHeroProps) {
                               fontSize: "14px",
                             }}
                           >
-                            Biz360+ Feature Story
+                            Business360 Feature Story
                           </span>
                         </div>
                       )}

@@ -12,8 +12,8 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Biz360+ | Business Intelligence & Insight",
-    template: "%s | Biz360+",
+    default: "Business360 | Business Intelligence & Insight",
+    template: "%s | Business360",
   },
   description:
     "Your all-in-one business publication platform covering Hospitality & Tourism, Technology, Retail, Finance, Marketing & Advertising, Companies, News, FemmeBiz, Economy, and Real Estate.",
@@ -28,22 +28,22 @@ export const metadata: Metadata = {
     "companies",
     "economy",
   ],
-  authors: [{ name: "Biz360+" }],
-  creator: "Biz360+",
-  metadataBase: new URL("https://biz360plus.com"),
+  authors: [{ name: "Business360" }],
+  creator: "Business360",
+  metadataBase: new URL("https://business360.ng"),
   openGraph: {
     type: "website",
     locale: "en_NG",
-    url: "https://biz360plus.com",
-    siteName: "Biz360+",
-    title: "Biz360+ | Business Intelligence & Insight",
+    url: "https://business360.ng",
+    siteName: "Business360",
+    title: "Business360 | Business Intelligence & Insight",
     description:
       "Your all-in-one business publication platform for every vertical of the business world.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Biz360+ | Business Intelligence & Insight",
-    creator: "@biz360plus",
+    title: "Business360 | Business Intelligence & Insight",
+    creator: "@business360ng",
   },
 };
 
