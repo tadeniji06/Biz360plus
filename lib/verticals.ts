@@ -59,7 +59,7 @@ export const VERTICALS: Vertical[] = [
   },
   {
     slug: "companies",
-    name: "Companies",
+    name: "Manufacturing",
     status: "active",
     sanityKey: "companies",
     description: "Corporate news, leadership, mergers, and business profiles.",
