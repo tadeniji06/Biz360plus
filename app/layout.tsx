@@ -52,6 +52,34 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const websiteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Business 360",
+    url: "https://www.thisisbusiness360.com",
+    potentialAction: {
+      "@type": "SearchAction",
+      target: "https://www.thisisbusiness360.com/?s={search_term_string}",
+      "query-input": "required name=search_term_string",
+    },
+  };
+
+  const organizationJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Business 360",
+    url: "https://www.thisisbusiness360.com",
+    logo: "https://www.thisisbusiness360.com/logo.png",
+    sameAs: [
+      "https://www.facebook.com/business360ng",
+      "https://www.twitter.com/business360ng",
+      "https://www.linkedin.com/company/business360ng",
+      "https://www.instagram.com/business360ng",
+    ],
+    description:
+      "Business 360 is a platform providing insights, strategies, and practical guidance for navigating the modern business and digital economy.",
+  };
+
   return (
     <html lang="en" className={inter.variable}>
       <body
@@ -61,6 +89,19 @@ export default function RootLayout({
           flexDirection: "column",
         }}
       >
+        {/* Sitewide structured data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(websiteJsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationJsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
         <Navbar />
         <main style={{ flex: 1 }}>{children}</main>
         <Footer />

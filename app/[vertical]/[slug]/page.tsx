@@ -44,5 +44,44 @@ export default async function ArticlePage({ params }: Props) {
     notFound();
   }
 
-  return <ArticlePageContent post={post} vertical={vertical} />;
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt || "",
+    image: post.mainImageUrl || "https://www.thisisbusiness360.com/logo.png",
+    datePublished: post.publishedAt || new Date().toISOString(),
+    dateModified: post.publishedAt || new Date().toISOString(),
+    author: {
+      "@type": "Person",
+      name: post.authorName || "Business360 Editorial Team",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Business 360",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://www.thisisbusiness360.com/logo.png",
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://www.thisisbusiness360.com/${verticalSlug}/${slug}`,
+    },
+    url: `https://www.thisisbusiness360.com/${verticalSlug}/${slug}`,
+    articleSection: vertical.name,
+    keywords: post.categories?.map((c: { title: string }) => c.title).join(", ") || vertical.name,
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(articleJsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
+      <ArticlePageContent post={post} vertical={vertical} />
+    </>
+  );
 }
