@@ -11,6 +11,16 @@ export interface Vertical {
 }
 
 export const VERTICALS: Vertical[] = [
+   {
+    slug: "news",
+    name: "News",
+    status: "active",
+    sanityKey: "news",
+    description:
+      "Breaking news, top stories, and in-depth business reporting.",
+    icon: "mdi:newspaper",
+    color: "#1a56db",
+  },
   {
     slug: "hospitality",
     name: "Hospitality & Tourism",
@@ -66,16 +76,6 @@ export const VERTICALS: Vertical[] = [
     sanityKey: "companies",
     description: "Corporate news, leadership, mergers, and business profiles.",
     icon: "mdi:office-building",
-    color: "#1a56db",
-  },
-  {
-    slug: "news",
-    name: "News",
-    status: "active",
-    sanityKey: "news",
-    description:
-      "Breaking news, top stories, and in-depth business reporting.",
-    icon: "mdi:newspaper",
     color: "#1a56db",
   },
   {

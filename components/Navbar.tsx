@@ -43,7 +43,7 @@ export default function Navbar() {
                 Business<span>360</span>
               </div>
               <div className="navbar-logo-sub">
-                Business Intelligence &amp; Insight
+                Business News, Intelligence &amp; Insights
               </div>
             </Link>
 
