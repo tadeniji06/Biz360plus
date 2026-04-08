@@ -7,6 +7,9 @@ export const SANITY_IDS = {
   marketing: "wyavdc9t",
   companies: "yrttf8j1",
   news: "z8q6qns0",
+  retail: "ixy48pl4",
+  finance: "87y3pr85",
+  economy: "u3nbsrft",
 } as const;
 
 export type ActiveVertical = keyof typeof SANITY_IDS;
@@ -17,7 +20,9 @@ export function getSanityClient(projectId: string) {
     projectId,
     dataset: "production",
     apiVersion: "2024-01-01",
-    useCdn: true,
+    // useCdn: false ensures freshly published content is always returned.
+    // The Sanity CDN can cache for up to 60s, causing new posts to not appear.
+    useCdn: false,
   });
 }
 

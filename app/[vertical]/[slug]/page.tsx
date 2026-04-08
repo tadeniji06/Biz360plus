@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export const revalidate = 300;
+export const revalidate = 60;
 
 export default async function ArticlePage({ params }: Props) {
   const { vertical: verticalSlug, slug } = await params;

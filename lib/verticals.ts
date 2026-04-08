@@ -34,7 +34,8 @@ export const VERTICALS: Vertical[] = [
   {
     slug: "retail",
     name: "Retail",
-    status: "coming-soon",
+    status: "active",
+    sanityKey: "retail",
     description: "Consumer trends, e-commerce, and retail industry news.",
     icon: "mdi:store",
     color: "#1a56db",
@@ -42,7 +43,8 @@ export const VERTICALS: Vertical[] = [
   {
     slug: "finance",
     name: "Finance",
-    status: "coming-soon",
+    status: "active",
+    sanityKey: "finance",
     description: "Banking, investments, fintech, and financial markets.",
     icon: "mdi:chart-line",
     color: "#1a56db",
@@ -87,7 +89,8 @@ export const VERTICALS: Vertical[] = [
   {
     slug: "economy",
     name: "Economy",
-    status: "coming-soon",
+    status: "active",
+    sanityKey: "economy",
     description: "Macroeconomics, policy, trade, and economic indicators.",
     icon: "mdi:bank",
     color: "#1a56db",
