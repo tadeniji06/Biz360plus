@@ -31,6 +31,8 @@ export default async function HomePage() {
     retailPosts,
     financePosts,
     economyPosts,
+    femmebizPosts,
+    realEstatePosts,
   ] = await Promise.all([
     fetchPosts("hospitality", 6),
     fetchPosts("tech", 6),
@@ -40,6 +42,8 @@ export default async function HomePage() {
     fetchPosts("retail", 6),
     fetchPosts("finance", 6),
     fetchPosts("economy", 6),
+    fetchPosts("femmebiz", 6),
+    fetchPosts("real-estate", 6),
   ]);
 
   // Merge all valid posts from every vertical into one hero pool
@@ -52,6 +56,8 @@ export default async function HomePage() {
     ...tagPosts(retailPosts, "retail"),
     ...tagPosts(financePosts, "finance"),
     ...tagPosts(economyPosts, "economy"),
+    ...tagPosts(femmebizPosts, "femmebiz"),
+    ...tagPosts(realEstatePosts, "real-estate"),
   ];
 
   return (
@@ -127,6 +133,22 @@ export default async function HomePage() {
           slug="marketing"
           icon="mdi:bullhorn"
           posts={marketingPosts.slice(0, 3)}
+        />
+
+        {/* FemmeBiz Section */}
+        <VerticalSection
+          title="FemmeBiz"
+          slug="femmebiz"
+          icon="mdi:account-heart"
+          posts={femmebizPosts.slice(0, 3)}
+        />
+
+        {/* Real Estate Section */}
+        <VerticalSection
+          title="Real Estate"
+          slug="real-estate"
+          icon="mdi:home-city"
+          posts={realEstatePosts.slice(0, 3)}
         />
       </div>
     </>

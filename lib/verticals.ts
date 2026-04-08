@@ -81,7 +81,8 @@ export const VERTICALS: Vertical[] = [
   {
     slug: "femmebiz",
     name: "FemmeBiz",
-    status: "coming-soon",
+    status: "active",
+    sanityKey: "femmebiz",
     description: "Women in business, leadership stories, and entrepreneurship.",
     icon: "mdi:account-heart",
     color: "#1a56db",
@@ -98,7 +99,8 @@ export const VERTICALS: Vertical[] = [
   {
     slug: "real-estate",
     name: "Real Estate",
-    status: "coming-soon",
+    status: "active",
+    sanityKey: "real-estate",
     description:
       "Property markets, housing, commercial real estate, and development.",
     icon: "mdi:home-city",

@@ -10,6 +10,8 @@ export const SANITY_IDS = {
   retail: "ixy48pl4",
   finance: "87y3pr85",
   economy: "u3nbsrft",
+  femmebiz: "6vo13t80",
+  "real-estate": "sbhmplpj",
 } as const;
 
 export type ActiveVertical = keyof typeof SANITY_IDS;
