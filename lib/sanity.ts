@@ -45,7 +45,8 @@ export async function fetchPosts(vertical: ActiveVertical, limit = 10) {
   }`;
   try {
     return await client.fetch(query);
-  } catch {
+  } catch (error) {
+    console.error(`Failed to fetch posts for ${vertical}:`, error);
     return [];
   }
 }
@@ -68,7 +69,8 @@ export async function fetchPost(vertical: ActiveVertical, slug: string) {
   }`;
   try {
     return await client.fetch(query, { slug });
-  } catch {
+  } catch (error) {
+    console.error(`Failed to fetch post setup for ${vertical}/${slug}:`, error);
     return null;
   }
 }

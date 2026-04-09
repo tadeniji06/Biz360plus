@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import BreakingTicker from "@/components/BreakingTicker";
 import HomeHero, { HeroPost } from "@/components/HomeHero";
 import VerticalSection from "@/components/VerticalSection";
+import NewsSection from "@/components/NewsSection";
 import VerticalsHub from "@/components/VerticalsHub";
 import { fetchPosts } from "@/lib/sanity";
 
@@ -71,12 +72,12 @@ export default async function HomePage() {
         {/* Verticals Hub Overview */}
         <VerticalsHub />
 
-        {/* News Section */}
-        <VerticalSection
+        {/* News Section (Special Layout) */}
+        <NewsSection
           title="News"
           slug="news"
           icon="mdi:newspaper"
-          posts={newsPosts.slice(0, 3)}
+          posts={newsPosts.slice(0, 5)}
         />
 
         {/* Tech Section */}

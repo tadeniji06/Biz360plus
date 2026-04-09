@@ -77,7 +77,7 @@ export default function VerticalIndexContent({ vertical, posts: rawPosts }: Prop
         {posts.length > 0 ? (
           <>
             {/* Feature + grid layout */}
-            {posts.length >= 2 && (
+            {posts.length >= 1 && (
               <div style={{ marginBottom: "48px" }}>
                 <div className="feature-grid">
                   {/* Main feature */}
