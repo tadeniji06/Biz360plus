@@ -9,7 +9,7 @@ export const SANITY_IDS = {
   news: "z8q6qns0",
   retail: "ixy48pl4",
   finance: "87y3pr85",
-  economy: "u3nbsrft",
+  economy: "ws1y8t2e",
   femmebiz: "6vo13t80",
   "real-estate": "sbhmplpj",
 } as const;
