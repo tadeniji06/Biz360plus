@@ -12,6 +12,14 @@ export interface Vertical {
 
 export const VERTICALS: Vertical[] = [
    {
+    slug: "b360tv",
+    name: "B360TV",
+    status: "active",
+    description: "Business, startups, investments, tech content and podcasts.",
+    icon: "mdi:youtube",
+    color: "#dc2626",
+  },
+  {
     slug: "news",
     name: "News",
     status: "active",
