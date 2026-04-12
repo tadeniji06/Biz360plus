@@ -18,43 +18,40 @@ export default function ContactPage() {
         </div>
 
         <div className="contact-grid">
-          {/* General Inquiries */}
+          {/* General Email */}
           <div className="contact-card">
             <div className="card-icon">
-              <Icon icon="mdi:information-variant" width={24} color="#1a56db" />
+              <Icon icon="mdi:email-outline" width={24} color="#1a56db" />
             </div>
-            <h3>General Inquiries</h3>
-            <p>For generalized questions regarding Business360, our platform, or accessing reports.</p>
-            <a href="mailto:hello@thisisbusiness360.com">hello@thisisbusiness360.com</a>
+            <h3>Email Us</h3>
+            <p>For all general inquiries, editorial questions, and partnership opportunities.</p>
+            <a href="mailto:business@theb360group.com">business@theb360group.com</a>
           </div>
 
-          {/* Editorial Team */}
+          {/* WhatsApp Inquiries */}
           <div className="contact-card">
             <div className="card-icon">
-              <Icon icon="mdi:newspaper-variant-outline" width={24} color="#1a56db" />
+              <Icon icon="mdi:whatsapp" width={24} color="#25D366" />
             </div>
-            <h3>Editorial Desk</h3>
-            <p>Pitch an op-ed, report a news tip, or flag an error to our journalists and editors.</p>
-            <a href="mailto:editor@thisisbusiness360.com">editor@thisisbusiness360.com</a>
-          </div>
-
-          {/* Partnerships */}
-          <div className="contact-card">
-            <div className="card-icon">
-              <Icon icon="mdi:handshake-outline" width={24} color="#1a56db" />
+            <h3>WhatsApp Support</h3>
+            <p>Interested in collaborating, sponsoring, or have further enquiries? Message us directly.</p>
+            <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+              <a href="https://wa.me/27656946477" target="_blank" rel="noopener noreferrer">
+                <Icon icon="mdi:whatsapp" width={16} /> SA: +27 65 694 6477
+              </a>
+              <a href="https://wa.me/2348064968725" target="_blank" rel="noopener noreferrer">
+                <Icon icon="mdi:whatsapp" width={16} /> NG: +234 806 496 8725
+              </a>
             </div>
-            <h3>Partnerships & Ads</h3>
-            <p>Contact our commercial team to learn about sponsored insights and display advertising.</p>
-            <a href="mailto:partnerships@thisisbusiness360.com">partnerships@thisisbusiness360.com</a>
           </div>
 
           {/* HQ */}
-          <div className="contact-card">
-            <div className="card-icon">
+          <div className="contact-card" style={{ gridColumn: "1 / -1", textAlign: "center" }}>
+            <div className="card-icon" style={{ margin: "0 auto 20px" }}>
               <Icon icon="mdi:map-marker-outline" width={24} color="#1a56db" />
             </div>
             <h3>Headquarters</h3>
-            <p>Business360 Intelligence<br/>Lagos, Nigeria</p>
+            <p>The B360 Group<br/>Lagos, Nigeria</p>
             <span className="info-text">Meetings by appointment only.</span>
           </div>
         </div>
@@ -144,7 +141,9 @@ export default function ContactPage() {
         }
 
         .contact-card a {
-          display: inline-block;
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
           font-weight: 600;
           color: #1a56db;
           text-decoration: none;
