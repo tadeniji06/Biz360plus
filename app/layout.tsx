@@ -30,11 +30,11 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Business360" }],
   creator: "Business360",
-  metadataBase: new URL("https://business360.ng"),
+  metadataBase: new URL("https://thisisbusiness360.com"),
   openGraph: {
     type: "website",
     locale: "en_NG",
-    url: "https://business360.ng",
+    url: "https://thisisbusiness360.com",
     siteName: "Business360",
     title: "Business360 | Business Intelligence & Insight",
     description:
@@ -56,10 +56,10 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "Business 360",
-    url: "https://www.thisisbusiness360.com",
+    url: "https://thisisbusiness360.com",
     potentialAction: {
       "@type": "SearchAction",
-      target: "https://www.thisisbusiness360.com/?s={search_term_string}",
+      target: "https://thisisbusiness360.com/?s={search_term_string}",
       "query-input": "required name=search_term_string",
     },
   };
@@ -68,8 +68,8 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "Business 360",
-    url: "https://www.thisisbusiness360.com",
-    logo: "https://www.thisisbusiness360.com/logo.png",
+    url: "https://thisisbusiness360.com",
+    logo: "https://thisisbusiness360.com/logo.png",
     sameAs: [
       "https://www.facebook.com/business360ng",
       "https://www.twitter.com/business360ng",

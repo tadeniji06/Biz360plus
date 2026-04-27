@@ -109,3 +109,35 @@ export async function fetchPostsByCategory(
     return [];
   }
 }
+
+/**
+ * Utility: fetch all posts across all verticals for sitemap.
+ * Returns an array of objects with slug, publishedAt, and vertical name.
+ */
+export async function getAllPostsForSitemap() {
+  const activeVerticals = Object.keys(SANITY_IDS) as ActiveVertical[];
+  const allPosts: { slug: string; publishedAt: string; vertical: string }[] = [];
+
+  for (const vertical of activeVerticals) {
+    const client = getSanityClient(SANITY_IDS[vertical]);
+    const query = `*[_type == "post"] {
+      "slug": slug.current,
+      publishedAt
+    }`;
+    try {
+      const posts = await client.fetch(query);
+      if (posts && Array.isArray(posts)) {
+        allPosts.push(
+          ...posts.map((p: any) => ({
+            slug: p.slug,
+            publishedAt: p.publishedAt,
+            vertical: vertical,
+          }))
+        );
+      }
+    } catch (error) {
+      console.error(`Failed to fetch sitemap posts for ${vertical}:`, error);
+    }
+  }
+  return allPosts;
+}
