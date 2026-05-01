@@ -1,5 +1,5 @@
 import { StaticImageData } from 'next/image';
-import { m1, m2, c1, c2, c3, c4 } from '@/assets';
+import { m1, m2, c1, c2, c3, c4, r1,r2 } from '@/assets';
 
 export interface Report {
   slug: string;
@@ -17,6 +17,48 @@ export interface Report {
 }
 
 export const REPORTS: Report[] = [
+  {
+    slug: 'embedded-finance-b2b-payments-african-sme',
+    title: 'Embedded Finance And B2B Payments For African SMEs',
+    subtitle: 'A B360Intel Intelligence Report · 2026',
+    description:
+      'The African venture capital ecosystem is undergoing a dramatic paradigm shift. Moving away from a pure growth-at-all-costs mindset, investors are now prioritizing unit economics, operational resilience, and clear paths to profitability. This comprehensive February 2026 report dives deep into the shifting investment thesis across Tier-1 and Tier-2 tech hubs. Through analyses of recent mega-rounds, rising M&A activity, and the emergence of specialized local micro-VCs, this document unpacks where the smart money is moving next—highlighting overlooked niches like climate-tech, health-tech, and cross-border logistics that are capturing the attention of institutional LPs.',
+    keyInsights: [
+      'M&A exits in the African tech ecosystem have increased by 45% year-on-year',
+      'Early-stage climate-tech rounds accounted for 18% of total Q1 funding',
+      'Valuation multiples have normalized, prioritizing EBITDA over top-line revenue',
+      'Local micro-VC funds now lead 30% of all Seed to Series A tech deals',
+    ],
+    pdfFile: '/april_report2.pdf',
+    coverImage: r2,
+    publishedDate: 'April 2026',
+    pages: 48,
+    category: 'Fintech & Startups',
+    tags: ['Fintech', 'Embedded Finance', 'B2B', 'Banking', 'Innovation'],  
+    accentColor: '#ff0000',
+  },
+    {
+    slug: 'omnichannel-retail-retailtech-adoption-africa',
+    title: 'Omnichannel Retail And Retailtech Adoption In Africa',
+    subtitle: 'A B360Intel Intelligence Report · 2026',
+    description:
+      'The African retail landscape is undergoing a seismic transformation as omnichannel strategies and retail technology adoption accelerate across the continent. This comprehensive B360Intel report delves into the evolving dynamics of African retail, examining how traditional brick-and-mortar stores are integrating digital channels to meet the demands of a new generation of consumers. Through in-depth case studies, consumer surveys, and market analysis, the report uncovers the key drivers behind omnichannel success in Africa, including mobile commerce, social media influence, and last-mile delivery innovations. It also highlights the challenges retailers face in implementing seamless customer experiences across physical and digital touchpoints, providing actionable insights for industry stakeholders looking to thrive in this rapidly changing environment.',
+    keyInsights: [
+      'Over 70% of African retailers have adopted an omnichannel strategy in the past 2 years',
+      'Mobile commerce accounts for 45% of total retail sales in key African markets',
+      'Social media platforms drive 30% of online retail traffic across the continent',
+      'Last-mile delivery innovations have reduced delivery times by 25% on average',
+      'Only 40% of retailers have fully integrated their inventory management systems',
+      'Consumer demand for seamless experiences is the top driver of omnichannel adoption',
+    ],
+    pdfFile: '/april_report1.pdf',
+    coverImage: r1,
+    publishedDate: 'April 2026',
+    pages: 48,
+    category: 'Retail & Tech',
+    tags: ['Omnichannel Retail', 'Retail Technology', 'Africa', 'E-commerce', 'Consumer Behavior'],
+    accentColor: '#dc2626',
+  },
   {
     slug: 'african-businesses-misjudging-risk-exposure',
     title: 'How African Businesses Are Misjudging Risk Exposure',
