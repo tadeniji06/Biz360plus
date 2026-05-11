@@ -39,7 +39,7 @@ export default async function VerticalPage({ params }: Props) {
   }
 
   // Active vertical — fetch posts
-  const posts = await fetchPosts(vertical.sanityKey as ActiveVertical, 12);
+  const posts = await fetchPosts(vertical.sanityKey as ActiveVertical, 1000);
 
   return <VerticalIndexContent vertical={vertical} posts={posts} />;
 }
