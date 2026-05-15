@@ -110,6 +110,66 @@ export async function fetchPostsByCategory(
   }
 }
 
+export interface SearchResult {
+  _id: string;
+  title: string;
+  slug: string;
+  publishedAt?: string;
+  excerpt?: string;
+  mainImageUrl?: string;
+  authorName?: string;
+  categories?: { _id: string; title: string }[];
+  vertical: ActiveVertical;
+}
+
+/**
+ * Utility: search posts across ALL verticals simultaneously.
+ * Uses GROQ `match` to search title and excerpt fields.
+ * Returns merged, date-sorted results with their vertical tagged.
+ */
+export async function searchPosts(term: string): Promise<SearchResult[]> {
+  if (!term || term.trim().length < 2) return [];
+
+  const activeVerticals = Object.keys(SANITY_IDS) as ActiveVertical[];
+  const searchTerm = term.trim();
+
+  const results = await Promise.allSettled(
+    activeVerticals.map(async (vertical) => {
+      const client = getSanityClient(SANITY_IDS[vertical]);
+      const query = `*[_type == "post" && (
+        title match $pattern ||
+        excerpt match $pattern ||
+        pt::text(body) match $pattern
+      )] | order(publishedAt desc)[0...20] {
+        _id,
+        title,
+        "slug": slug.current,
+        publishedAt,
+        excerpt,
+        "mainImageUrl": mainImage.asset->url,
+        "authorName": author->name,
+        "categories": categories[]->{ _id, title }
+      }`;
+      const posts = await client.fetch(query, { pattern: `*${searchTerm}*` });
+      return (posts as any[]).map((p) => ({ ...p, vertical }));
+    })
+  );
+
+  const merged: SearchResult[] = [];
+  for (const result of results) {
+    if (result.status === "fulfilled") {
+      merged.push(...result.value);
+    }
+  }
+
+  // Sort by publishedAt descending
+  return merged.sort((a, b) => {
+    const aDate = a.publishedAt ? new Date(a.publishedAt).getTime() : 0;
+    const bDate = b.publishedAt ? new Date(b.publishedAt).getTime() : 0;
+    return bDate - aDate;
+  });
+}
+
 /**
  * Utility: fetch all posts across all verticals for sitemap.
  * Returns an array of objects with slug, publishedAt, and vertical name.

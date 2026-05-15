@@ -1,19 +1,41 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
+import { useState, useEffect, useRef } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import { VERTICALS } from "@/lib/verticals";
 import { Icon } from "@iconify/react";
 
 export default function Navbar() {
   const [navOpen, setNavOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
   const pathname = usePathname();
+  const router = useRouter();
+  const searchInputRef = useRef<HTMLInputElement>(null);
 
-  // Close nav on route change
+  // Close everything on route change
   useEffect(() => {
     setNavOpen(false);
+    setSearchOpen(false);
+    setSearchValue("");
   }, [pathname]);
+
+  // Auto-focus search input when overlay opens
+  useEffect(() => {
+    if (searchOpen) {
+      setTimeout(() => searchInputRef.current?.focus(), 50);
+    }
+  }, [searchOpen]);
+
+  // Close search on Escape
+  useEffect(() => {
+    function onKey(e: KeyboardEvent) {
+      if (e.key === "Escape") setSearchOpen(false);
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
 
   // Prevent body scroll when mobile nav is open
   useEffect(() => {
@@ -49,8 +71,13 @@ export default function Navbar() {
 
             {/* Actions */}
             <div className="navbar-actions">
-              <button className="btn-search" aria-label="Search">
-                <Icon icon="mdi:magnify" width={18} />
+              <button
+                className={`btn-search${searchOpen ? " btn-search--active" : ""}`}
+                aria-label={searchOpen ? "Close search" : "Open search"}
+                aria-expanded={searchOpen}
+                onClick={() => { setSearchOpen(!searchOpen); setNavOpen(false); }}
+              >
+                <Icon icon={searchOpen ? "mdi:close" : "mdi:magnify"} width={18} />
               </button>
 
               {/* Hamburger — always visible, toggles the dark nav strip */}
@@ -66,6 +93,38 @@ export default function Navbar() {
           </div>
         </div>
 
+        {/* ── Search Overlay ── */}
+        {searchOpen && (
+          <div className="navbar-search-overlay">
+            <div className="container">
+              <form
+                className="navbar-search-form"
+                role="search"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  const trimmed = searchValue.trim();
+                  if (trimmed.length < 2) return;
+                  setSearchOpen(false);
+                  router.push(`/search?q=${encodeURIComponent(trimmed)}`);
+                }}
+              >
+                <Icon icon="mdi:magnify" width={18} className="navbar-search-icon" aria-hidden />
+                <input
+                  ref={searchInputRef}
+                  type="search"
+                  value={searchValue}
+                  onChange={(e) => setSearchValue(e.target.value)}
+                  placeholder="Search articles across all verticals…"
+                  className="navbar-search-input"
+                  aria-label="Search"
+                />
+                <button type="submit" className="navbar-search-submit" disabled={searchValue.trim().length < 2}>
+                  <Icon icon="mdi:arrow-right" width={18} />
+                </button>
+              </form>
+            </div>
+          </div>
+        )}
         {/* ── Dark verticals strip (desktop: always visible / mobile: toggle) ── */}
         <nav
           className={`navbar-nav${navOpen ? " navbar-nav--open" : ""}`}
@@ -173,7 +232,8 @@ export default function Navbar() {
           transition: all var(--transition-fast);
           flex-shrink: 0;
         }
-        .btn-search:hover {
+        .btn-search:hover,
+        .btn-search--active {
           background: var(--color-primary);
           color: white;
         }
@@ -196,6 +256,67 @@ export default function Navbar() {
           background: var(--color-primary);
           color: white;
         }
+
+        /* ── Search Overlay ── */
+        .navbar-search-overlay {
+          background: var(--color-white);
+          border-top: 1px solid var(--color-border);
+          border-bottom: 2px solid var(--color-primary);
+          padding: 12px 0;
+          animation: searchSlideDown 0.18s ease;
+        }
+        @keyframes searchSlideDown {
+          from { opacity: 0; transform: translateY(-8px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        .navbar-search-form {
+          display: flex;
+          align-items: center;
+          gap: 0;
+          background: var(--color-gray-100);
+          border: 1.5px solid var(--color-border);
+          border-radius: 6px;
+          overflow: hidden;
+          transition: border-color 150ms ease, box-shadow 150ms ease;
+          max-width: 680px;
+        }
+        .navbar-search-form:focus-within {
+          border-color: var(--color-primary);
+          box-shadow: 0 0 0 3px rgba(26,86,219,0.1);
+          background: var(--color-white);
+        }
+        .navbar-search-icon {
+          flex-shrink: 0;
+          margin: 0 12px;
+          color: var(--color-gray-500);
+        }
+        .navbar-search-input {
+          flex: 1;
+          border: none;
+          outline: none;
+          background: transparent;
+          font-family: var(--font-sans);
+          font-size: 15px;
+          color: var(--color-text);
+          padding: 11px 0;
+        }
+        .navbar-search-input::placeholder { color: var(--color-gray-500); }
+        .navbar-search-input::-webkit-search-cancel-button { display: none; }
+        .navbar-search-submit {
+          flex-shrink: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 44px;
+          height: 44px;
+          background: var(--color-primary);
+          border: none;
+          color: white;
+          cursor: pointer;
+          transition: background 150ms ease, opacity 150ms ease;
+        }
+        .navbar-search-submit:hover { background: var(--color-primary-dark); }
+        .navbar-search-submit:disabled { opacity: 0.35; cursor: default; }
 
         /* ── Verticals nav strip ── */
         .navbar-nav {
