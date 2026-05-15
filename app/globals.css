@@ -814,8 +814,30 @@ img {
   padding-left: 28px;
 }
 
+.article-body ul {
+  list-style-type: disc;
+}
+
+.article-body ol {
+  list-style-type: decimal;
+}
+
+/* Nested lists */
+.article-body ul ul,
+.article-body ol ul {
+  list-style-type: circle;
+  margin: 8px 0;
+}
+
+.article-body ul ol,
+.article-body ol ol {
+  list-style-type: lower-alpha;
+  margin: 8px 0;
+}
+
 .article-body li {
   margin-bottom: 8px;
+  padding-left: 4px;
 }
 
 .article-body blockquote {
