@@ -7,4 +7,6 @@ import c3 from './c3.png';
 import c4 from './c4.png';
 import r1 from './r1.jpeg';
 import r2 from './r2.jpeg';
-export { m1, m2, b360tv, c1, c2, c3, c4, r1, r2 };
+import k1 from './k1.png';
+import k2 from './k2.png';
+export { m1, m2, b360tv, c1, c2, c3, c4, r1, r2, k1, k2 };

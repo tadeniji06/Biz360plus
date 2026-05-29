@@ -1,5 +1,5 @@
 import { StaticImageData } from 'next/image';
-import { m1, m2, c1, c2, c3, c4, r1,r2 } from '@/assets';
+import { m1, m2, c1, c2, c3, c4, r1,r2, k1, k2 } from '@/assets';
 
 export interface Report {
   slug: string;
@@ -17,6 +17,46 @@ export interface Report {
 }
 
 export const REPORTS: Report[] = [
+  {
+    slug: 'revenue-sustainability-across-technology-business-models-in-african-markets',
+    title: 'Revenue Sustainability Across Technology Business Models In African Markets',
+    subtitle: 'A B360Intel Intelligence Report · 2026',
+    description:
+      'The African venture capital ecosystem is undergoing a dramatic paradigm shift. Moving away from a pure growth-at-all-costs mindset, investors are now prioritizing unit economics, operational resilience, and clear paths to profitability. This comprehensive February 2026 report dives deep into the shifting investment thesis across Tier-1 and Tier-2 tech hubs. Through analyses of recent mega-rounds, rising M&A activity, and the emergence of specialized local micro-VCs, this document unpacks where the smart money is moving next—highlighting overlooked niches like climate-tech, health-tech, and cross-border logistics that are capturing the attention of institutional LPs.',
+    keyInsights: [
+      'M&A exits in the African tech ecosystem have increased by 45% year-on-year',
+      'Early-stage climate-tech rounds accounted for 18% of total Q1 funding',
+      'Valuation multiples have normalized, prioritizing EBITDA over top-line revenue',
+      'Local micro-VC funds now lead 30% of all Seed to Series A tech deals',
+    ],
+    pdfFile: '/may_report2.pdf',
+    coverImage: k2,
+    publishedDate: 'May 2026',
+    pages: 48,
+    category: 'Economy & Markets',
+    tags: ['Fintech', 'Embedded Finance', 'B2B', 'Banking', 'Innovation'],  
+    accentColor: '#ff0000',
+  },
+  {
+    slug: 'aligning-production-capacity-market-demand-signals',
+    title: 'Aligning Production Capacity With MArket Deman Signals',
+    subtitle: 'A B360Intel Intelligence Report · 2026',
+    description:
+      'As the global economy navigates inflation and geopolitical shifts, Africa’s growth narrative is being rewritten. This January 2026 outlook report provides an incisive analysis of the macroeconomic forces shaping the continent’s key markets. By tracking FDI flows, currency stabilization efforts, and the rise of intra-African trade under the AfCFTA, the report identifies the precise sectors—agritech, green energy, and digital infrastructure—that are primed for exponential growth. Armed with proprietary executive surveys and predictive modeling, this report equips investors and policymakers with a definitive roadmap for capturing alpha in an evolving economic landscape.',
+    keyInsights: [
+      'Intra-African trade volume is projected to increase by 14% this fiscal year',
+      'Green energy infrastructure will attract $4.2B in foreign direct investment',
+      'Currency stabilization measures have reduced import costs by 8% in key hubs',
+      'Agritech sector funding is expected to outpace traditional fintech growth',
+    ],
+    pdfFile: '/may_report1.pdf',
+    coverImage: k1,
+    publishedDate: 'May 2026',
+    pages: 48,
+    category: 'Economy & Markets',
+    tags: ['Fintech', 'Embedded Finance', 'B2B', 'Banking', 'Innovation'],  
+    accentColor: '#ff0000',
+  },
   {
     slug: 'embedded-finance-b2b-payments-african-sme',
     title: 'Embedded Finance And B2B Payments For African SMEs',
