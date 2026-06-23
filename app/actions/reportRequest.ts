@@ -78,7 +78,7 @@ export async function requestReport(
       body: JSON.stringify({
         from: 'Business360 Reports <onboarding@resend.dev>',
         to: ['m360solutionsgroup@gmail.com'],
-        subject: `📊 New Report Request — ${reportTitle}`,
+        subject: `New Report Request — ${reportTitle}`,
         html,
       }),
     });
