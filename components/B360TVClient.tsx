@@ -10,7 +10,7 @@ export default function B360TVClient() {
   const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
-    // Show subscribe popup after 3 seconds
+    // popup after 3 seconds
     const timer = setTimeout(() => setShowPopup(true), 3000);
     return () => clearTimeout(timer);
   }, []);
