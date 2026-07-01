@@ -4,6 +4,8 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Icon } from "@iconify/react";
 import { Vertical } from "@/lib/verticals";
+import AdBanner from "./AdBanner";
+import ArticleAdPopup from "./ArticleAdPopup";
 
 interface BlockChild {
   _key: string;
@@ -515,9 +517,18 @@ export default function ArticlePageContent({ post, vertical }: Props) {
                 </div>
               </div>
             )}
+
+            {/* Sidebar Ad Widget */}
+            <div className="sidebar-widget">
+              <div className="sidebar-widget-title">From Our Partners</div>
+              <AdBanner variant="sidebar" />
+            </div>
           </aside>
         </div>
       </div>
+
+      {/* Timed popup ad — fires every 2 minutes */}
+      <ArticleAdPopup />
     </div>
   );
 }

@@ -4,6 +4,7 @@ import HomeHero, { HeroPost } from "@/components/HomeHero";
 import VerticalSection from "@/components/VerticalSection";
 import NewsSection from "@/components/NewsSection";
 import VerticalsHub from "@/components/VerticalsHub";
+import AdBanner from "@/components/AdBanner";
 import { fetchPosts } from "@/lib/sanity";
 
 export const metadata: Metadata = {
@@ -80,6 +81,9 @@ export default async function HomePage() {
           posts={newsPosts.slice(0, 5)}
         />
 
+        {/* Ad Banner — after News */}
+        <AdBanner variant="inline" forceIndex={0} />
+
         {/* Tech Section */}
         <VerticalSection
           title="Technology"
@@ -103,6 +107,9 @@ export default async function HomePage() {
           icon="mdi:chart-line"
           posts={financePosts.slice(0, 3)}
         />
+
+        {/* Ad Banner — mid page */}
+        <AdBanner variant="inline" forceIndex={1} />
 
         {/* Retail Section */}
         <VerticalSection
@@ -135,6 +142,9 @@ export default async function HomePage() {
           icon="mdi:bullhorn"
           posts={marketingPosts.slice(0, 3)}
         />
+
+        {/* Ad Banner — lower page */}
+        <AdBanner variant="inline" forceIndex={2} />
 
         {/* FemmeBiz Section */}
         <VerticalSection

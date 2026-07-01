@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Icon } from "@iconify/react";
 import ArticleCard from "./ArticleCard";
+import AdBanner from "./AdBanner";
 import { Vertical } from "@/lib/verticals";
 
 interface Post {
@@ -242,6 +243,9 @@ export default function VerticalIndexContent({ vertical, posts: rawPosts }: Prop
             {/* Remaining articles grid */}
             {posts.length > 4 && (
               <>
+                {/* Ad Banner between featured and grid */}
+                <AdBanner variant="inline" />
+
                 <div className="section-header" style={{ marginBottom: "24px" }}>
                   <h2 className="section-title">Latest Stories</h2>
                 </div>
