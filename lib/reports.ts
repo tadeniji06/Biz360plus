@@ -337,7 +337,6 @@ export const REPORTS: Report[] = [
 			"Infrastructure",
 			"West Africa",
 			"Sustainability",
-			"Minigrids",
 		],
 		accentColor: "#dc2626",
 	},
