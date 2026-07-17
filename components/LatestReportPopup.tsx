@@ -16,23 +16,38 @@ export default function LatestReportPopup() {
   useEffect(() => {
     setHasMounted(true);
     
-    // Check if user has dismissed the popup today
-    const cookies = document.cookie;
-    const hasDismissed = cookies.includes("report_popup_dismissed=true");
+    if (!latestReport) return;
 
-    if (!hasDismissed && latestReport) {
-      // Show popup after 3 seconds
-      const timer = setTimeout(() => {
-        setIsOpen(true);
-      }, 3000);
-      return () => clearTimeout(timer);
-    }
+    const checkAndShowPopup = (delay = 0) => {
+      const cookies = document.cookie;
+      const hasDismissed = cookies.includes("report_popup_dismissed=true");
+      
+      // If the popup is already open, don't trigger another one
+      if (!hasDismissed) {
+        setTimeout(() => {
+          setIsOpen((prev) => {
+            if (!prev) return true;
+            return prev;
+          });
+        }, delay);
+      }
+    };
+
+    // Initial check (3s delay)
+    checkAndShowPopup(3000);
+
+    // Continuous check every 30 seconds for active users
+    const interval = setInterval(() => {
+      checkAndShowPopup(0);
+    }, 30000);
+
+    return () => clearInterval(interval);
   }, [latestReport]);
 
   const handleClose = () => {
     setIsOpen(false);
-    // Dismiss for 24 hours
-    document.cookie = "report_popup_dismissed=true; path=/; max-age=86400";
+    // Dismiss for 2 minutes (120 seconds)
+    document.cookie = "report_popup_dismissed=true; path=/; max-age=120";
   };
 
   if (!hasMounted || !latestReport) return null;
