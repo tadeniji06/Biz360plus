@@ -12,6 +12,9 @@ const nextConfig: NextConfig = {
 	typescript: {
 		ignoreBuildErrors: true,
 	},
+	experimental: {
+		isrFlushToDisk: false,
+	},
 };
 
 export default nextConfig;
