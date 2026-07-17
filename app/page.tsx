@@ -6,6 +6,8 @@ import NewsSection from "@/components/NewsSection";
 import VerticalsHub from "@/components/VerticalsHub";
 import AdBanner from "@/components/AdBanner";
 import ArticleAdPopup from "@/components/ArticleAdPopup";
+import LatestReportPopup from "@/components/LatestReportPopup";
+import LatestReportSection from "@/components/LatestReportSection";
 import { fetchPosts } from "@/lib/sanity";
 
 export const metadata: Metadata = {
@@ -69,13 +71,22 @@ export default async function HomePage() {
 
       {/* Ad popup — shows immediately on home page visit, re-shows every 2 min after dismiss */}
       <ArticleAdPopup />
+
+      {/* Latest report popup — shows after a few seconds if not dismissed */}
+      <LatestReportPopup />
+
       <div className="container">
         {/* Hero — rotates through all valid posts from every vertical */}
         <HomeHero allPosts={allValidPosts} />
 
         {/* Verticals Hub Overview */}
         <VerticalsHub />
+      </div>
 
+      {/* Full-width latest report section */}
+      <LatestReportSection />
+
+      <div className="container">
         {/* News Section (Special Layout) */}
         <NewsSection
           title="News"

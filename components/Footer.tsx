@@ -86,6 +86,11 @@ export default function Footer() {
           <div>
             <div className="footer-col-title">Active Verticals</div>
             <ul className="footer-links">
+              <li>
+                <Link href="/reports" style={{ color: "var(--color-primary-light)", fontWeight: 600 }}>
+                  Intelligence Reports
+                </Link>
+              </li>
               {activeVerticals.map((v) => (
                 <li key={v.slug}>
                   <Link href={`/${v.slug}`}>{v.name}</Link>

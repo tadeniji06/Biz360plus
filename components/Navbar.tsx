@@ -45,13 +45,13 @@ export default function Navbar() {
 
   const navItems = [
     { label: "Home", href: "/", icon: "mdi:home" },
+    { label: "Reports", href: "/reports", icon: "mdi:file-chart", highlight: true },
     ...VERTICALS.map((v) => ({
       label: v.name,
       href: v.status === "active" ? `/${v.slug}` : null,
       icon: v.icon,
       soon: v.status === "coming-soon",
     })),
-    { label: "Reports", href: "/reports", icon: "mdi:file-chart", highlight: true },
   ];
 
   return (
