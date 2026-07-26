@@ -16,8 +16,8 @@ export const metadata: Metadata = {
     "Africa's premier all-in-one business publication covering Hospitality, Tech, Retail, Finance, Marketing, Companies, News, Economy, Real Estate, and FemmeBiz.",
 };
 
-// Revalidate every 60s so newly published Sanity content shows quickly
-export const revalidate = 60;
+// Force dynamic rendering on every request to show live Sanity content instantly with zero ISR cache writes
+export const dynamic = "force-dynamic";
 
 /** Tag posts with their vertical slug and filter out any with null slugs */
 function tagPosts(posts: Awaited<ReturnType<typeof fetchPosts>>, verticalSlug: string): HeroPost[] {

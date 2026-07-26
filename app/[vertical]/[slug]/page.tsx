@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export const revalidate = 60;
+export const dynamic = "force-dynamic"; // Live fetch on every request — 0 ISR writes
 
 export default async function ArticlePage({ params }: Props) {
   const { vertical: verticalSlug, slug } = await params;
