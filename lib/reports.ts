@@ -45,7 +45,7 @@ export const REPORTS: Report[] = [
 		],
 		pdfFile: "/PropTech and digital transformation.pdf",
 		coverImage: prop,
-		publishedDate: "July 2026",
+		publishedDate: "August 2026",
 		pages: 53,
 		category: "PropTech",
 		tags: ["PropTech", "Africa"],
