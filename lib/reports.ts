@@ -12,6 +12,7 @@ import {
 	k2,
 	ck1,
 	ck2,
+	prop,
 } from "@/assets";
 
 export interface Report {
@@ -30,6 +31,26 @@ export interface Report {
 }
 
 export const REPORTS: Report[] = [
+		{
+		slug: "prop-tech-and-digital-transformation",
+		title: "PropTech and digital transformation",
+		subtitle: "A B360Intel Intelligence Report · 2026",
+		description:
+			"The African real estate landscape is undergoing a profound transformation, driven by rapid urbanization, shifting consumer preferences, and the disruptive force of technology. This July 2026 intelligence report unpacks the evolving dynamics of the PropTech ecosystem across the continent. We delve into how digital innovations are reshaping property transactions, management, and development, creating unprecedented opportunities for investors and developers. By analyzing key trends, regional hotspots, and technological advancements, we provide a comprehensive overview of the PropTech sector’s trajectory and its impact on Africa's economic future.",
+		keyInsights: [
+			"PropTech investment in Africa surged 140% in the past 24 months, outpacing traditional real estate growth",
+			"Blockchain-based property titling reduces transaction times by up to 60%",
+			"AI-powered property valuation models improve accuracy by 25% in emerging markets",
+			"Drone-based construction monitoring cuts project costs by an average of 18%",
+		],
+		pdfFile: "/PropTech and digital transformation.pdf",
+		coverImage: prop,
+		publishedDate: "July 2026",
+		pages: 28,
+		category: "PropTech",
+		tags: ["PropTech", "Africa"],
+		accentColor: "#004396",
+	},
 	{
 		slug: "race-to-build-africas-next-giant",
 		title: "The Race to Build Africa's Next Manufacturing Giant",
