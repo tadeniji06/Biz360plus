@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import NewsletterPopup from "@/components/NewsletterPopup";
+import AnalyticsScript from "@/components/AnalyticsScript";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -107,6 +108,7 @@ export default function RootLayout({
         <main style={{ flex: 1 }}>{children}</main>
         <Footer />
         <NewsletterPopup />
+        <AnalyticsScript />
       </body>
     </html>
   );
