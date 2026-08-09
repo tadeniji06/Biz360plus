@@ -37,9 +37,9 @@ export async function fetchPosts(vertical: ActiveVertical, limit = 10) {
     slug,
     publishedAt,
     excerpt,
-    "mainImageUrl": mainImage.asset->url,
+    "mainImageUrl": mainImage.asset->url + "?w=800&auto=format",
     "authorName": author->name,
-    "authorImageUrl": author->image.asset->url,
+    "authorImageUrl": author->image.asset->url + "?w=120&auto=format",
     "categories": categories[]->{ _id, title },
     body
   }`;
@@ -60,9 +60,9 @@ export async function fetchPost(vertical: ActiveVertical, slug: string) {
     slug,
     publishedAt,
     excerpt,
-    "mainImageUrl": mainImage.asset->url,
+    "mainImageUrl": mainImage.asset->url + "?w=1200&auto=format",
     "authorName": author->name,
-    "authorImageUrl": author->image.asset->url,
+    "authorImageUrl": author->image.asset->url + "?w=120&auto=format",
     "authorBio": author->bio,
     "categories": categories[]->{ _id, title },
     body
@@ -146,7 +146,7 @@ export async function searchPosts(term: string): Promise<SearchResult[]> {
         "slug": slug.current,
         publishedAt,
         excerpt,
-        "mainImageUrl": mainImage.asset->url,
+        "mainImageUrl": mainImage.asset->url + "?w=600&auto=format",
         "authorName": author->name,
         "categories": categories[]->{ _id, title }
       }`;
