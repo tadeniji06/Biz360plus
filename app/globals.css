@@ -1,6 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap");
 @import "tailwindcss";
 
+/* ── Landing page Tailwind theme tokens ── */
+@theme inline {
+  --color-primary-50: #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-500: #3b82f6;
+  --color-primary-600: #2563eb;
+  --color-primary-700: #1d4ed8;
+  --color-primary-900: #1e3a8a;
+
+  --color-navy-800: #1e293b;
+  --color-navy-900: #0f172a;
+  --color-navy-950: #020617;
+
+  --color-accent-lime: #a3e635;
+  --color-accent-orange: #f97316;
+}
+
 :root {
   /* Brand Colors */
   --color-primary: #1a56db;
@@ -1639,5 +1656,44 @@ img {
 
 .ad-popup-dismiss:hover {
   color: var(--color-gray-800);
+}
+
+/* ── Footer Logo ── */
+.footer-logo-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  margin-bottom: 16px;
+}
+.footer-logo-img {
+  width: auto;
+  height: 40px;
+  max-width: 180px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+/* ── Utility: hide scrollbar ── */
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── Custom scrollbar (landing page style) ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
 }
 

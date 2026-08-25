@@ -50,12 +50,12 @@ export const VERTICALS: Vertical[] = [
     color: "#1a56db",
   },
   {
-    slug: "retail",
-    name: "Retail",
+    slug: "manufacturing",
+    name: "Manufacturing",
     status: "active",
-    sanityKey: "retail",
-    description: "Consumer trends, e-commerce, and retail industry news.",
-    icon: "mdi:store",
+    sanityKey: "manufacturing",
+    description: "Industrial trends, production, and manufacturing news.",
+    icon: "mdi:factory",
     color: "#1a56db",
   },
   {

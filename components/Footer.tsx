@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Icon } from "@iconify/react";
 import { VERTICALS } from "@/lib/verticals";
 
@@ -34,9 +35,15 @@ export default function Footer() {
         <div className="footer-grid">
           {/* Brand */}
           <div>
-            <div className="footer-logo-text">
-              Business<span>360</span>
-            </div>
+            <Link href="/" className="footer-logo-link">
+              <Image
+                src="/newlogo.png"
+                alt="Business360"
+                width={160}
+                height={44}
+                className="footer-logo-img"
+              />
+            </Link>
             <p className="footer-tagline">
               Your all-in-one business intelligence platform covering
               hospitality, tech, retail, finance, marketing, companies, news,
