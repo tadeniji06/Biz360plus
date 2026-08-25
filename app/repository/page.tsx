@@ -83,7 +83,7 @@ const reports: Report[] = [
     id: "r5",
     title: "FMCG Distribution & Retail Audit — Lagos",
     publisher: "Nielsen Nigeria",
-    category: "FMCG",
+    category: "Manufacturing",
     year: "2023",
     pages: "64",
     description:
@@ -107,7 +107,7 @@ const reports: Report[] = [
   },
 ];
 
-const categories = ["All", "Financial Services", "Manufacturing", "Hospitality", "Technology", "FMCG", "Economy"];
+const categories = ["All", "Economy", "Financial Services", "Technology", "Manufacturing", "Retail", "Hospitality"];
 
 type ModalState = { open: false } | { open: true; report: Report };
 type DownloadState = "idle" | "submitting" | "success";
@@ -144,33 +144,75 @@ export default function RepositoryPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div style={{ minHeight: "100vh", background: "#f8fafc" }}>
       {/* Header */}
-      <div className="bg-slate-900 pt-20 pb-24 relative overflow-hidden">
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute top-0 right-1/3 w-[600px] h-[600px] bg-indigo-600/10 rounded-full blur-3xl" />
+      <div
+        style={{
+          background: "#0f172a",
+          paddingTop: "80px",
+          paddingBottom: "96px",
+          position: "relative",
+          overflow: "hidden",
+        }}
+      >
+        <div style={{ position: "absolute", inset: 0, pointerEvents: "none", zIndex: 0 }}>
+          <div
+            style={{
+              position: "absolute",
+              top: 0,
+              right: "33%",
+              width: "600px",
+              height: "600px",
+              background: "radial-gradient(circle, rgba(79,70,229,0.1) 0%, transparent 70%)",
+              borderRadius: "50%",
+            }}
+          />
         </div>
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center">
+        <div style={{ margin: "0 auto", maxWidth: "1280px", padding: "0 24px", textAlign: "center", position: "relative", zIndex: 1 }}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 bg-indigo-900/60 border border-indigo-500/30 rounded-full px-4 py-1.5 text-sm font-semibold text-indigo-300 mb-6"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "8px",
+              background: "rgba(49,46,129,0.6)",
+              border: "1px solid rgba(99,102,241,0.3)",
+              borderRadius: "9999px",
+              padding: "6px 16px",
+              fontSize: "14px",
+              fontWeight: 600,
+              color: "#a5b4fc",
+              marginBottom: "24px",
+            }}
           >
-            <FileText className="h-3.5 w-3.5" />
+            <FileText style={{ width: "14px", height: "14px" }} />
             Third-Party Intelligence Reports
           </motion.div>
 
           <motion.h1
-            className="text-4xl sm:text-6xl font-bold text-white tracking-tight mb-4"
+            style={{
+              fontSize: "clamp(2.25rem, 5vw, 3.75rem)",
+              fontWeight: 700,
+              color: "white",
+              letterSpacing: "-0.02em",
+              marginBottom: "16px",
+            }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
           >
-            The <span className="text-indigo-400">Repository</span>
+            The <span style={{ color: "#818cf8" }}>Repository</span>
           </motion.h1>
 
           <motion.p
-            className="text-slate-300 text-lg max-w-2xl mx-auto"
+            style={{
+              fontSize: "1.125rem",
+              color: "#cbd5e1",
+              maxWidth: "672px",
+              margin: "0 auto",
+              lineHeight: 1.6,
+            }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
@@ -182,32 +224,39 @@ export default function RepositoryPage() {
       </div>
 
       {/* Filter Bar */}
-      <div className="sticky top-[60px] z-50 bg-white border-b border-slate-200 shadow-sm">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-4 flex flex-col sm:flex-row gap-4 items-center justify-between">
+      <div style={{ position: "sticky", top: "60px", zIndex: 50, background: "white", borderBottom: "1px solid #e2e8f0", boxShadow: "0 1px 2px 0 rgba(0, 0, 0, 0.05)" }}>
+        <div style={{ margin: "0 auto", maxWidth: "1280px", padding: "16px 24px", display: "flex", flexWrap: "wrap", gap: "16px", alignItems: "center", justifyContent: "space-between" }}>
           {/* Search */}
-          <div className="relative w-full sm:w-72">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+          <div style={{ position: "relative", width: "100%", maxWidth: "300px" }}>
+            <Search style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", width: "16px", height: "16px", color: "#94a3b8" }} />
             <input
               type="search"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search reports…"
-              className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 text-sm outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
+              style={{ width: "100%", padding: "10px 16px 10px 36px", borderRadius: "12px", border: "1px solid #e2e8f0", fontSize: "14px", outline: "none", boxSizing: "border-box" }}
             />
           </div>
 
           {/* Category Pills */}
-          <div className="flex items-center gap-2 overflow-x-auto scrollbar-none pb-1">
-            <Filter className="h-4 w-4 text-slate-400 flex-shrink-0" />
+          <div style={{ display: "flex", alignItems: "center", gap: "8px", overflowX: "auto", paddingBottom: "4px" }}>
+            <Filter style={{ width: "16px", height: "16px", color: "#94a3b8", flexShrink: 0 }} />
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`flex-shrink-0 rounded-full px-3.5 py-1.5 text-xs font-semibold transition-colors ${
-                  activeCategory === cat
-                    ? "bg-slate-900 text-white"
-                    : "bg-slate-100 text-slate-600 hover:bg-slate-200"
-                }`}
+                style={{
+                  flexShrink: 0,
+                  borderRadius: "9999px",
+                  padding: "6px 14px",
+                  fontSize: "12px",
+                  fontWeight: 600,
+                  border: "none",
+                  cursor: "pointer",
+                  background: activeCategory === cat ? "#0f172a" : "#f1f5f9",
+                  color: activeCategory === cat ? "white" : "#475569",
+                  transition: "all 150ms ease"
+                }}
               >
                 {cat}
               </button>
@@ -217,43 +266,43 @@ export default function RepositoryPage() {
       </div>
 
       {/* Reports Grid */}
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 py-12">
+      <div style={{ margin: "0 auto", maxWidth: "1280px", padding: "48px 24px" }}>
         {filtered.length === 0 ? (
-          <div className="text-center py-24 text-slate-400">
-            <FileText className="h-12 w-12 mx-auto mb-4 opacity-30" />
-            <p className="text-lg font-medium">No reports found.</p>
-            <p className="text-sm mt-1">Try a different search or category.</p>
+          <div style={{ textAlign: "center", padding: "96px 0", color: "#94a3b8" }}>
+            <FileText style={{ width: "48px", height: "48px", margin: "0 auto 16px", opacity: 0.3 }} />
+            <p style={{ fontSize: "1.125rem", fontWeight: 500 }}>No reports found.</p>
+            <p style={{ fontSize: "14px", marginTop: "4px" }}>Try a different search or category.</p>
           </div>
         ) : (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))", gap: "24px" }}>
             {filtered.map((report, i) => (
               <motion.div
                 key={report.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.06 }}
-                className="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg hover:border-slate-300 transition-all group flex flex-col"
+                style={{ background: "white", borderRadius: "16px", border: "1px solid #e2e8f0", boxShadow: "0 1px 3px rgba(0,0,0,0.05)", display: "flex", flexDirection: "column", overflow: "hidden" }}
               >
-                <div className="p-6 flex-1">
+                <div style={{ padding: "24px", flex: 1 }}>
                   {/* Category + Tag */}
-                  <div className="flex items-center gap-2 mb-4">
-                    <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
+                  <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "16px" }}>
+                    <span style={{ fontSize: "12px", fontWeight: 600, color: "#64748b", textTransform: "uppercase", letterSpacing: "0.05em" }}>
                       {report.category}
                     </span>
-                    <span className={`ml-auto rounded-full px-2.5 py-0.5 text-xs font-bold ${report.tagColor}`}>
+                    <span className={report.tagColor} style={{ marginLeft: "auto", borderRadius: "9999px", padding: "2px 10px", fontSize: "12px", fontWeight: 700 }}>
                       {report.tag}
                     </span>
                   </div>
 
-                  <h3 className="font-bold text-slate-900 text-base leading-snug mb-2 group-hover:text-blue-600 transition-colors">
+                  <h3 style={{ fontWeight: 700, color: "#0f172a", fontSize: "1rem", lineHeight: 1.4, marginBottom: "8px", transition: "color 150ms ease" }}>
                     {report.title}
                   </h3>
-                  <p className="text-sm text-slate-500 leading-relaxed mb-4">
+                  <p style={{ fontSize: "14px", color: "#64748b", lineHeight: 1.6, marginBottom: "16px" }}>
                     {report.description}
                   </p>
 
                   {/* Meta */}
-                  <div className="flex items-center gap-4 text-xs text-slate-400">
+                  <div style={{ display: "flex", alignItems: "center", gap: "16px", fontSize: "12px", color: "#94a3b8" }}>
                     <span>{report.publisher}</span>
                     <span>·</span>
                     <span>{report.year}</span>
@@ -264,12 +313,29 @@ export default function RepositoryPage() {
                   </div>
                 </div>
 
-                <div className="px-6 pb-6">
+                <div style={{ padding: "0 24px 24px" }}>
                   <button
                     onClick={() => openModal(report)}
-                    className="w-full flex items-center justify-center gap-2 rounded-xl bg-slate-900 text-white text-sm font-semibold py-3 hover:bg-blue-600 transition-colors group/btn"
+                    style={{
+                      width: "100%",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      gap: "8px",
+                      borderRadius: "12px",
+                      background: "#0f172a",
+                      color: "white",
+                      fontSize: "14px",
+                      fontWeight: 600,
+                      padding: "12px",
+                      border: "none",
+                      cursor: "pointer",
+                      transition: "background 150ms ease"
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.background = "#2563eb")}
+                    onMouseLeave={(e) => (e.currentTarget.style.background = "#0f172a")}
                   >
-                    <Download className="h-4 w-4 group-hover/btn:translate-y-0.5 transition-transform" />
+                    <Download style={{ width: "16px", height: "16px" }} />
                     Download Report
                   </button>
                 </div>
@@ -297,73 +363,77 @@ export default function RepositoryPage() {
               transition={{ type: "spring", damping: 30, stiffness: 400 }}
               className="fixed inset-0 z-[999] flex items-center justify-center p-4"
             >
-              <div className="bg-white rounded-3xl shadow-2xl w-full max-w-md overflow-hidden">
+              <div style={{ background: "white", borderRadius: "24px", boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)", width: "100%", maxWidth: "448px", overflow: "hidden" }}>
                 {/* Modal Header */}
-                <div className="bg-slate-900 p-6 relative">
+                <div style={{ background: "#0f172a", padding: "24px", position: "relative" }}>
                   <button
                     onClick={closeModal}
-                    className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors"
+                    style={{ position: "absolute", top: "16px", right: "16px", width: "32px", height: "32px", borderRadius: "50%", background: "rgba(255,255,255,0.1)", color: "white", display: "flex", alignItems: "center", justifyContent: "center", border: "none", cursor: "pointer", transition: "background 150ms ease" }}
+                    onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.2)")}
+                    onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.1)")}
                     aria-label="Close"
                   >
-                    <X className="h-4 w-4" />
+                    <X style={{ width: "16px", height: "16px" }} />
                   </button>
-                  <div className="flex items-center gap-3 mb-1">
-                    <FileText className="h-5 w-5 text-indigo-400" />
-                    <span className="text-xs font-bold text-indigo-400 uppercase tracking-wider">
+                  <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "8px" }}>
+                    <FileText style={{ width: "20px", height: "20px", color: "#818cf8" }} />
+                    <span style={{ fontSize: "12px", fontWeight: 700, color: "#818cf8", textTransform: "uppercase", letterSpacing: "0.05em" }}>
                       {modal.report.category}
                     </span>
                   </div>
-                  <h3 className="text-white font-bold text-lg leading-snug pr-8">
+                  <h3 style={{ color: "white", fontWeight: 700, fontSize: "18px", lineHeight: 1.4, paddingRight: "32px", marginBottom: "4px" }}>
                     {modal.report.title}
                   </h3>
-                  <p className="text-slate-400 text-xs mt-1">
+                  <p style={{ color: "#94a3b8", fontSize: "12px" }}>
                     {modal.report.publisher} · {modal.report.year} · {modal.report.fileSize}
                   </p>
                 </div>
 
                 {/* Modal Body */}
-                <div className="p-6">
+                <div style={{ padding: "32px" }}>
                   <AnimatePresence mode="wait">
                     {downloadState === "success" ? (
                       <motion.div
                         key="success"
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        className="text-center py-6"
+                        style={{ textAlign: "center", padding: "24px 0" }}
                       >
-                        <div className="w-14 h-14 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center mx-auto mb-4">
-                          <CheckCircle2 className="h-7 w-7" />
+                        <div style={{ width: "56px", height: "56px", borderRadius: "50%", background: "#ecfdf5", color: "#10b981", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 16px" }}>
+                          <CheckCircle2 style={{ width: "28px", height: "28px" }} />
                         </div>
-                        <h4 className="text-xl font-bold text-slate-900 mb-2">
+                        <h4 style={{ fontSize: "20px", fontWeight: 700, color: "#0f172a", marginBottom: "8px" }}>
                           Download Ready!
                         </h4>
-                        <p className="text-slate-500 text-sm mb-6">
+                        <p style={{ color: "#64748b", fontSize: "14px", marginBottom: "24px" }}>
                           Your download link has been sent to your email.
                         </p>
                         <button
                           onClick={closeModal}
-                          className="text-sm font-semibold text-blue-600 hover:underline"
+                          style={{ fontSize: "14px", fontWeight: 600, color: "#2563eb", background: "none", border: "none", cursor: "pointer" }}
+                          onMouseEnter={(e) => (e.currentTarget.style.textDecoration = "underline")}
+                          onMouseLeave={(e) => (e.currentTarget.style.textDecoration = "none")}
                         >
                           Back to Repository
                         </button>
                       </motion.div>
                     ) : (
                       <motion.div key="form" initial={{ opacity: 1 }} exit={{ opacity: 0 }}>
-                        <div className="flex items-center gap-2 text-slate-600 text-sm mb-5">
-                          <Lock className="h-4 w-4 text-slate-400 flex-shrink-0" />
+                        <div style={{ display: "flex", alignItems: "flex-start", gap: "12px", fontSize: "14px", color: "#1e3a8a", background: "#eff6ff", padding: "16px", borderRadius: "12px", marginBottom: "24px", lineHeight: 1.5 }}>
+                          <Lock style={{ width: "20px", height: "20px", color: "#3b82f6", flexShrink: 0, marginTop: "2px" }} />
                           <p>
                             Please provide your details to download this report. Your information is
-                            kept confidential.
+                            kept strictly confidential.
                           </p>
                         </div>
 
-                        <form onSubmit={handleDownloadRequest} className="space-y-4">
+                        <form onSubmit={handleDownloadRequest} style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
                           <div>
                             <label
-                              className="block text-sm font-semibold text-slate-700 mb-1.5"
+                              style={{ display: "block", fontSize: "12px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", color: "#64748b", marginBottom: "8px" }}
                               htmlFor="repo-name"
                             >
-                              Full Name <span className="text-red-500">*</span>
+                              Full Name <span style={{ color: "#ef4444" }}>*</span>
                             </label>
                             <input
                               id="repo-name"
@@ -374,16 +444,18 @@ export default function RepositoryPage() {
                                 setReqForm((p) => ({ ...p, name: e.target.value }))
                               }
                               placeholder="John Doe"
-                              className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
+                              style={{ width: "100%", padding: "14px 16px", borderRadius: "12px", border: "1px solid #cbd5e1", background: "#f8fafc", fontSize: "15px", color: "#0f172a", outline: "none", boxSizing: "border-box", transition: "all 0.2s ease" }}
+                              onFocus={(e) => { e.currentTarget.style.borderColor = "#3b82f6"; e.currentTarget.style.background = "#ffffff"; e.currentTarget.style.boxShadow = "0 0 0 4px rgba(59, 130, 246, 0.1)"; }}
+                              onBlur={(e) => { e.currentTarget.style.borderColor = "#cbd5e1"; e.currentTarget.style.background = "#f8fafc"; e.currentTarget.style.boxShadow = "none"; }}
                             />
                           </div>
 
                           <div>
                             <label
-                              className="block text-sm font-semibold text-slate-700 mb-1.5"
+                              style={{ display: "block", fontSize: "12px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", color: "#64748b", marginBottom: "8px" }}
                               htmlFor="repo-email"
                             >
-                              Email Address <span className="text-red-500">*</span>
+                              Email Address <span style={{ color: "#ef4444" }}>*</span>
                             </label>
                             <input
                               id="repo-email"
@@ -394,16 +466,18 @@ export default function RepositoryPage() {
                                 setReqForm((p) => ({ ...p, email: e.target.value }))
                               }
                               placeholder="john@company.com"
-                              className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
+                              style={{ width: "100%", padding: "14px 16px", borderRadius: "12px", border: "1px solid #cbd5e1", background: "#f8fafc", fontSize: "15px", color: "#0f172a", outline: "none", boxSizing: "border-box", transition: "all 0.2s ease" }}
+                              onFocus={(e) => { e.currentTarget.style.borderColor = "#3b82f6"; e.currentTarget.style.background = "#ffffff"; e.currentTarget.style.boxShadow = "0 0 0 4px rgba(59, 130, 246, 0.1)"; }}
+                              onBlur={(e) => { e.currentTarget.style.borderColor = "#cbd5e1"; e.currentTarget.style.background = "#f8fafc"; e.currentTarget.style.boxShadow = "none"; }}
                             />
                           </div>
 
                           <div>
                             <label
-                              className="block text-sm font-semibold text-slate-700 mb-1.5"
+                              style={{ display: "block", fontSize: "12px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", color: "#64748b", marginBottom: "8px" }}
                               htmlFor="repo-phone"
                             >
-                              Phone Number <span className="text-red-500">*</span>
+                              Phone Number <span style={{ color: "#ef4444" }}>*</span>
                             </label>
                             <input
                               id="repo-phone"
@@ -414,16 +488,37 @@ export default function RepositoryPage() {
                                 setReqForm((p) => ({ ...p, phone: e.target.value }))
                               }
                               placeholder="+234 800 000 0000"
-                              className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
+                              style={{ width: "100%", padding: "14px 16px", borderRadius: "12px", border: "1px solid #cbd5e1", background: "#f8fafc", fontSize: "15px", color: "#0f172a", outline: "none", boxSizing: "border-box", transition: "all 0.2s ease" }}
+                              onFocus={(e) => { e.currentTarget.style.borderColor = "#3b82f6"; e.currentTarget.style.background = "#ffffff"; e.currentTarget.style.boxShadow = "0 0 0 4px rgba(59, 130, 246, 0.1)"; }}
+                              onBlur={(e) => { e.currentTarget.style.borderColor = "#cbd5e1"; e.currentTarget.style.background = "#f8fafc"; e.currentTarget.style.boxShadow = "none"; }}
                             />
                           </div>
 
                           <button
                             type="submit"
                             disabled={downloadState === "submitting"}
-                            className="w-full flex items-center justify-center gap-2 bg-slate-900 text-white font-semibold rounded-xl py-3.5 text-sm hover:bg-blue-600 transition-colors disabled:opacity-60 disabled:cursor-not-allowed mt-2"
+                            style={{
+                              width: "100%",
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              gap: "8px",
+                              background: "#0f172a",
+                              color: "white",
+                              fontWeight: 600,
+                              borderRadius: "12px",
+                              padding: "14px",
+                              fontSize: "14px",
+                              marginTop: "8px",
+                              border: "none",
+                              cursor: downloadState === "submitting" ? "not-allowed" : "pointer",
+                              opacity: downloadState === "submitting" ? 0.6 : 1,
+                              transition: "background 150ms ease"
+                            }}
+                            onMouseEnter={(e) => !downloadState && (e.currentTarget.style.background = "#2563eb")}
+                            onMouseLeave={(e) => !downloadState && (e.currentTarget.style.background = "#0f172a")}
                           >
-                            <Download className="h-4 w-4" />
+                            <Download style={{ width: "16px", height: "16px" }} />
                             {downloadState === "submitting"
                               ? "Processing…"
                               : "Get Download Link"}

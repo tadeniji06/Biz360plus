@@ -18,7 +18,7 @@ import {
 const sectors = [
   { icon: Building2, name: "Financial Services", color: "bg-blue-50 text-blue-600" },
   { icon: Users, name: "Technology", color: "bg-indigo-50 text-indigo-600" },
-  { icon: ShoppingCart, name: "FMCG", color: "bg-orange-50 text-orange-600" },
+  { icon: ShoppingCart, name: "Retail", color: "bg-orange-50 text-orange-600" },
   { icon: Briefcase, name: "Manufacturing", color: "bg-emerald-50 text-emerald-600" },
   { icon: Map, name: "Hospitality", color: "bg-rose-50 text-rose-600" },
   { icon: TrendingUp, name: "Economy", color: "bg-slate-100 text-slate-700" },

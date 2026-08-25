@@ -80,8 +80,8 @@ export default function Navbar() {
               <Image
                 src="/newlogo.png"
                 alt="Business360"
-                width={160}
-                height={44}
+                width={260}
+                height={72}
                 className="navbar-logo-img"
                 priority
               />
@@ -341,7 +341,7 @@ export default function Navbar() {
           box-shadow: var(--shadow-sm);
         }
         .navbar-top {
-          height: 64px;
+          height: 88px;
           display: flex;
           align-items: center;
           justify-content: space-between;
@@ -355,8 +355,8 @@ export default function Navbar() {
         }
         .navbar-logo-img {
           width: auto;
-          height: 40px;
-          max-width: 180px;
+          height: 68px;
+          max-width: 300px;
           object-fit: contain;
         }
         .navbar-actions {

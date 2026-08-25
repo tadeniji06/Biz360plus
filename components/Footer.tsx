@@ -35,19 +35,17 @@ export default function Footer() {
         <div className="footer-grid">
           {/* Brand */}
           <div>
-            <Link href="/" className="footer-logo-link">
+            <Link href="/" style={{ display: "inline-block", background: "white", padding: "12px 20px", borderRadius: "16px", marginBottom: "24px" }}>
               <Image
                 src="/newlogo.png"
                 alt="Business360"
-                width={160}
-                height={44}
-                className="footer-logo-img"
+                width={220}
+                height={60}
+                style={{ objectFit: "contain", display: "block" }}
               />
             </Link>
             <p className="footer-tagline">
-              Your all-in-one business intelligence platform covering
-              hospitality, tech, retail, finance, marketing, companies, news,
-              and more across Africa and beyond.
+              Find, Understand and Reach Nigerian Companies and Key Decision-makers.
             </p>
             <div className="footer-socials">
               <a
@@ -107,23 +105,25 @@ export default function Footer() {
           </div>
 
           {/* Coming Soon Verticals */}
-          <div>
-            <div className="footer-col-title">Coming Soon</div>
-            <ul className="footer-links">
-              {comingSoonVerticals.map((v) => (
-                <li key={v.slug}>
-                  <span
-                    style={{
-                      color: "rgba(255,255,255,0.35)",
-                      fontSize: "14px",
-                    }}
-                  >
-                    {v.name}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {comingSoonVerticals.length > 0 && (
+            <div>
+              <div className="footer-col-title">Coming Soon</div>
+              <ul className="footer-links">
+                {comingSoonVerticals.map((v) => (
+                  <li key={v.slug}>
+                    <span
+                      style={{
+                        color: "rgba(255,255,255,0.35)",
+                        fontSize: "14px",
+                      }}
+                    >
+                      {v.name}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           {/* Company + Newsletter */}
           <div>
