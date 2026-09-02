@@ -13,6 +13,7 @@ import {
 	ck1,
 	ck2,
 	prop,
+	aug,
 } from "@/assets";
 
 export interface Report {
@@ -31,6 +32,26 @@ export interface Report {
 }
 
 export const REPORTS: Report[] = [
+		{
+		slug: "why-economic-growth-isnt-creating-enough-wealth",
+		title: "Why Economic Growth Isn't Creating Enough Wealth",
+		subtitle: "A B360Intel Intelligence Report · 2026",
+		description:
+			"Africa is experiencing a paradox: GDP growth is rising, yet wealth creation and job creation are lagging behind. This intelligence report unpacks the structural reasons why Africa’s economic expansion isn’t translating into widespread prosperity, highlighting the disconnect between headline growth figures and the lived realities of millions across the continent.",
+		keyInsights: [
+			"Despite consistent GDP growth, Africa’s per capita wealth has stagnated, with median wealth declining in 14 countries since 2020",
+			"Only 4% of African companies are expanding into neighboring countries, creating a fragmented market with limited intra-African trade",
+			"The continent’s youth unemployment rate remains critically high at 30%, with an estimated 230 million young Africans seeking work",
+			"Over 80% of jobs created in Africa are in the informal sector, offering low wages, no benefits, and limited security",
+		],
+		pdfFile: "/August_report.pdf",
+		coverImage: aug,
+		publishedDate: "August 2026",
+		pages: 57,
+		category: "Wealth Creation",
+		tags: ["Wealth Creation", "Africa"],
+		accentColor: "#004396",
+	},
 		{
 		slug: "prop-tech-and-digital-transformation",
 		title: "PropTech and digital transformation",
