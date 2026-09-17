@@ -1,12 +1,9 @@
+import React from "react";
 import { Metadata } from "next";
 import BreakingTicker from "@/components/BreakingTicker";
 import HomeHero, { HeroPost } from "@/components/HomeHero";
-import VerticalSection from "@/components/VerticalSection";
-import NewsSection from "@/components/NewsSection";
-import VerticalsHub from "@/components/VerticalsHub";
+import ArticleCard from "@/components/ArticleCard";
 import AdBanner from "@/components/AdBanner";
-import ArticleAdPopup from "@/components/ArticleAdPopup";
-import LatestReportPopup from "@/components/LatestReportPopup";
 import LatestReportSection from "@/components/LatestReportSection";
 import { fetchPosts } from "@/lib/sanity";
 
@@ -35,27 +32,24 @@ export default async function InsightsPage() {
     techPosts,
     marketingPosts,
     companiesPosts,
-    newsPosts,
     retailPosts,
     financePosts,
     economyPosts,
     femmebizPosts,
     realEstatePosts,
   ] = await Promise.all([
-    fetchPosts("hospitality", 6),
-    fetchPosts("tech", 6),
-    fetchPosts("marketing", 6),
-    fetchPosts("companies", 6),
-    fetchPosts("news", 8),
-    fetchPosts("retail", 6),
-    fetchPosts("finance", 6),
-    fetchPosts("economy", 6),
-    fetchPosts("femmebiz", 6),
-    fetchPosts("real-estate", 6),
+    fetchPosts("hospitality", 10),
+    fetchPosts("tech", 10),
+    fetchPosts("marketing", 10),
+    fetchPosts("companies", 10),
+    fetchPosts("retail", 10),
+    fetchPosts("finance", 10),
+    fetchPosts("economy", 10),
+    fetchPosts("femmebiz", 10),
+    fetchPosts("real-estate", 10),
   ]);
 
   const allValidPosts: HeroPost[] = [
-    ...tagPosts(newsPosts, "news"),
     ...tagPosts(techPosts, "tech"),
     ...tagPosts(hospitalityPosts, "hospitality"),
     ...tagPosts(companiesPosts, "companies"),
@@ -65,97 +59,55 @@ export default async function InsightsPage() {
     ...tagPosts(economyPosts, "economy"),
     ...tagPosts(femmebizPosts, "femmebiz"),
     ...tagPosts(realEstatePosts, "real-estate"),
-  ];
+  ].sort((a, b) => {
+    const dateA = a.publishedAt ? new Date(a.publishedAt).getTime() : 0;
+    const dateB = b.publishedAt ? new Date(b.publishedAt).getTime() : 0;
+    return dateB - dateA;
+  });
 
   return (
     <>
       <BreakingTicker />
-      <ArticleAdPopup />
-      <LatestReportPopup />
 
       <div className="container">
         <HomeHero allPosts={allValidPosts} />
-        <VerticalsHub />
       </div>
 
       <LatestReportSection />
 
-      <div className="container">
-        <NewsSection
-          title="News"
-          slug="news"
-          icon="mdi:newspaper"
-          posts={newsPosts.slice(0, 5)}
-        />
+      <div className="container" style={{ padding: "64px 0" }}>
+        
+        <div style={{ marginBottom: "40px", display: "flex", alignItems: "center", gap: "12px" }}>
+          <h2 style={{ fontSize: "24px", fontWeight: 700, color: "var(--color-heading)", letterSpacing: "-0.02em", margin: 0 }}>
+            Latest Insights
+          </h2>
+          <div style={{ height: "1px", flex: 1, background: "var(--color-border)" }} />
+        </div>
 
-        <AdBanner variant="inline" forceIndex={0} />
-
-        <VerticalSection
-          title="Technology"
-          slug="tech"
-          icon="mdi:laptop"
-          posts={techPosts.slice(0, 3)}
-        />
-
-        <VerticalSection
-          title="Hospitality & Tourism"
-          slug="hospitality"
-          icon="mdi:hotel"
-          posts={hospitalityPosts.slice(0, 3)}
-        />
-
-        <VerticalSection
-          title="Finance"
-          slug="finance"
-          icon="mdi:chart-line"
-          posts={financePosts.slice(0, 3)}
-        />
-
-        <AdBanner variant="inline" forceIndex={1} />
-
-        <VerticalSection
-          title="Retail"
-          slug="retail"
-          icon="mdi:store"
-          posts={retailPosts.slice(0, 3)}
-        />
-
-        <VerticalSection
-          title="Economy"
-          slug="economy"
-          icon="mdi:bank"
-          posts={economyPosts.slice(0, 3)}
-        />
-
-        <VerticalSection
-          title="Manufacturing"
-          slug="companies"
-          icon="mdi:office-building"
-          posts={companiesPosts.slice(0, 3)}
-        />
-
-        <VerticalSection
-          title="Marketing & Advertising"
-          slug="marketing"
-          icon="mdi:bullhorn"
-          posts={marketingPosts.slice(0, 3)}
-        />
-
-        <AdBanner variant="inline" forceIndex={2} />
-
-        <VerticalSection
-          title="FemmeBiz"
-          slug="femmebiz"
-          icon="mdi:account-heart"
-          posts={femmebizPosts.slice(0, 3)}
-        />
-
-        <VerticalSection
-          title="Real Estate"
-          slug="real-estate"
-          icon="mdi:home-city"
-          posts={realEstatePosts.slice(0, 3)}
-        />
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+          gap: "32px",
+          marginBottom: "48px"
+        }}>
+          {allValidPosts.map((post, i) => {
+            const showAd = i > 0 && i % 9 === 0;
+            return (
+              <React.Fragment key={post._id}>
+                {showAd && (
+                  <div style={{ gridColumn: "1 / -1", margin: "16px 0" }}>
+                    <AdBanner variant="inline" forceIndex={(i / 9) % 3} />
+                  </div>
+                )}
+                <ArticleCard
+                  {...post}
+                  vertical={post.verticalSlug}
+                  index={i}
+                />
+              </React.Fragment>
+            );
+          })}
+        </div>
       </div>
     </>
   );

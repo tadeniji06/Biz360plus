@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import { Icon } from "@iconify/react";
 import { Vertical } from "@/lib/verticals";
 import AdBanner from "./AdBanner";
-import ArticleAdPopup from "./ArticleAdPopup";
 
 interface BlockChild {
   _key: string;
@@ -526,9 +525,6 @@ export default function ArticlePageContent({ post, vertical }: Props) {
           </aside>
         </div>
       </div>
-
-      {/* Timed popup ad — fires every 2 minutes */}
-      <ArticleAdPopup />
     </div>
   );
 }
