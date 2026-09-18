@@ -216,15 +216,6 @@ export default function DatabasePage() {
                   </li>
                 ))}
               </ul>
-
-              <div style={{ marginTop: "32px", paddingTop: "32px", borderTop: "1px solid #f1f5f9" }}>
-                <p style={{ fontSize: "12px", fontWeight: 700, color: "#94a3b8", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "16px" }}>Access plans from</p>
-                <div style={{ display: "flex", alignItems: "baseline", gap: "8px" }}>
-                  <span style={{ fontSize: "2.25rem", fontWeight: 700, color: "#0f172a" }}>₦75,000</span>
-                  <span style={{ fontSize: "14px", color: "#64748b" }}>/month</span>
-                </div>
-                <p style={{ fontSize: "14px", color: "#64748b", marginTop: "8px" }}>Enterprise plans available for large teams.</p>
-              </div>
             </div>
           </motion.div>
 
