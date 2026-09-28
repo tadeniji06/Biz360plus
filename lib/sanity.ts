@@ -5,7 +5,7 @@ export const SANITY_IDS = {
   hospitality: "pf872mb3",
   tech: "dx9ee77h",
   marketing: "wyavdc9t",
-  companies: "yrttf8j1",
+  manufacturing: "yrttf8j1",
   news: "z8q6qns0",
   retail: "ixy48pl4",
   finance: "87y3pr85",
